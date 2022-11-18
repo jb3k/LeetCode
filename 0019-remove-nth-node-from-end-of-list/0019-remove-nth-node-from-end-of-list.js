@@ -18,13 +18,13 @@
     const fast = moveFast(holder, n);   /* Time O(N) */
     const slow = moveSlow(holder, fast);/* Time O(N) */
 
-    slow.next = slow.next.next || null;
+    slow.next = slow.next.next
 
     return holder.next;
 };
 
 const moveFast = (fast, n) => {
-    for (let i = 1; i <= (n + 1); i++) {/* Time O(N) */
+    for (let i = 0; i <= n; i++) {/* Time O(N) */
         fast = fast.next;
     }
 
