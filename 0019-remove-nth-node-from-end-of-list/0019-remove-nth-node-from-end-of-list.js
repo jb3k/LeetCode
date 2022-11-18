@@ -18,7 +18,7 @@
     const fast = moveFast(holder, n);   /* Time O(N) */
     const slow = moveSlow(holder, fast);/* Time O(N) */
 
-    slow.next = slow.next.next
+    slow.next = slow.next.next || null
 
     return holder.next;
 };
