@@ -4,11 +4,19 @@
  */
 var isPalindrome = function(s) {
     
-    let newStr = s.toLowerCase().replace(/[^0-9a-z]/g, "");
-    let left = 0, right = newStr.length-1;
+    let alp = 'abcdefghijklmnopqrstuvwxyz1234567890'
+    let str = ''
+    
+    for(let i = 0; i < s.length; i++){
+    let char = s[i]
+        if(alp.includes(char.toLowerCase())) str += char.toLowerCase()
+    }
+
+    let left = 0;
+    let right = str.length-1;
     
     while(left < right){
-        if(newStr[left] !== newStr[right]) return false
+        if(str[left] !== str[right]) return false
         left++
         right--
     }
