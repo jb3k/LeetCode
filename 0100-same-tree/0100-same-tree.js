@@ -11,14 +11,22 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
-var isSameTree = function(p, q) {
+var isSameTree = function(root, subRoot) {
     
-    if(!p && !q) return true
-    if(!p || !q || p.val !== q.val) return false
+//     if(!p && !q) return true
+//     if(!p || !q || p.val !== q.val) return false
     
-    if(!isSameTree(p.left, q.left) || !isSameTree(p.right, q.right)) return false
-    return true
-    
-    
+//     if(!isSameTree(p.left, q.left) || !isSameTree(p.right, q.right)) return false
+//     return true
+        const hasReachedEnd = !(root && subRoot)
+    if (hasReachedEnd) return root === subRoot
+
+    const isMismatch = root.val !== subRoot.val
+    if (isMismatch) return false
+
+    const isLeftSame = isSameTree(root.left, subRoot.left)
+    const isRightSame = isSameTree(root.right, subRoot.right)
+
+    return isLeftSame && isRightSame
     
 };
