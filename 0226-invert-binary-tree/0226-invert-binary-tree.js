@@ -12,16 +12,14 @@
  */
 var invertTree = function(root) {
     
-    if(root === null) return null;
+if(!root) return null
     
-    const temp = root.left;
-    root.left = root.right;
-    root.right = temp;
+let temp = root.left
+root.left = root.right
+root.right = temp
     
-    invertTree(root.left);
-    invertTree(root.right);
-    
-    return root;
-    
+invertTree(root.left)
+invertTree(root.right)
+return root
     
 };
