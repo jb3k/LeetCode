@@ -12,25 +12,21 @@
  * @return {boolean}
  */
 var isSubtree = function(root, subRoot) {
-    if (!root) return false
-
-    if (isSame(root, subRoot)) return true
-
-    const hasLeftTree = isSubtree(root.left, subRoot)
-    const hasRightTree = isSubtree(root.right, subRoot)
-
-    return hasLeftTree || hasRightTree
+    
+  const queue = [root];
+  while (queue.length) {
+    const node = queue.pop();
+    if (!node) continue;
+    if (isSame(node, subRoot)) return true;
+    queue.push(node.right, node.left);
+  }
+  return false;
+    
 };
 
-const isSame = (root, subRoot) => {
-    const hasReachedEnd = !(root && subRoot)
-    if (hasReachedEnd) return root === subRoot
-
-    const isMismatch = root.val !== subRoot.val
-    if (isMismatch) return false
-
-    const isLeftSame = isSame(root.left, subRoot.left)
-    const isRightSame = isSame(root.right, subRoot.right)
-
-    return isLeftSame && isRightSame
+var isSame = function(root, subRoot){
+    if (!root || !subRoot) return !root && !subRoot;
+    if( root.val !== subRoot.val) return false
+    
+    return (isSame(root.left, subRoot.left) && isSame(root.right, subRoot.right))
 }
