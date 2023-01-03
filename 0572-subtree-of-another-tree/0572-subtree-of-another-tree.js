@@ -25,8 +25,8 @@ var isSubtree = function(root, subRoot) {
 };
 
 var isSame = function(root, subRoot){
-    if (!root || !subRoot) return !root && !subRoot;
-    if( root.val !== subRoot.val) return false
+    if (!root && !subRoot) return true;
+    if( !root || !subRoot || root.val !== subRoot.val) return false
     
     return (isSame(root.left, subRoot.left) && isSame(root.right, subRoot.right))
 }
