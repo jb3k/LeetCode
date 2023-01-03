@@ -13,15 +13,9 @@
  */
 var isSameTree = function(root, subRoot) {
     
-    const hasReachedEnd = !(root && subRoot)
-    if (hasReachedEnd) return root === subRoot
-
-    const isMismatch = root.val !== subRoot.val
-    if (isMismatch) return false
-
-    const isLeftSame = isSameTree(root.left, subRoot.left)
-    const isRightSame = isSameTree(root.right, subRoot.right)
-
-    return isLeftSame && isRightSame
+  if (!root && !subRoot) return true;
+  if (!root || !subRoot || root.val !== subRoot.val) return false;
+  
+  return isSameTree(root.left, subRoot.left) && isSameTree(root.right, subRoot.right);
     
 };
