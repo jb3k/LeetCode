@@ -12,10 +12,11 @@ var removeDuplicates = function(nums) {
     
     for(let i = 1; i < nums.length; i++){
         if(nums[pointer] !== nums[i]){
-            nums[++pointer] = nums[i]
+            nums[pointer + 1] = nums[i]
+            pointer++
         }
     }
-    return ++pointer
+    return pointer + 1
     
     
     
