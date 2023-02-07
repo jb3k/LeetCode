@@ -4,23 +4,31 @@
  */
 var isValid = function(s) {
     
-    let stack = [];
-    let map = {
-        '(':')',
-        '[':']',
-        '{':'}',
-    }
+    // let stack = []
+    // identify valid brackets
+    // loop thru string
+    // see if 
     
-    for(let i=0;i< s.length;i++){
-        if(map[s[i]]){
-            stack.push(map[s[i]])
-        }else{
-            if(stack.pop() != s[i]){
-               return false
+    let stack = []
+    let hash = {
+        ')':'(',
+        ']':'[',
+        '}':'{'
+    }
+    for(let i = 0; i < s.length; i++){
+        let bracket = s[i];
+        if(bracket in hash){
+            if(stack[stack.length - 1] === hash[bracket]){
+                stack.pop()
+            }else{
+                return false
             }
+        }else{
+            stack.push(bracket) 
         }
+        
+        
     }
     
-    return stack.length > 0 ? false : true;
-  	
+    return stack.length === 0
 };
