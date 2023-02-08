@@ -19,11 +19,9 @@ var numRescueBoats = function(people, limit) {
     while(left <= right){
         let weight = sorted[left] + sorted[right];
         if(weight <= limit){
-            left++
-            right--  
-        }else{
-            right--  
+            left++ 
         }
+        right--
         counter++   
         
     }
