@@ -18,6 +18,5 @@ var calPoints = function(ops) {
             stack.pop();
         }
     })
-    console.log(stack)
     return stack.reduce((a,v)=>a+v,0)
 };
