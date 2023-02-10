@@ -19,9 +19,7 @@ var mergeTwoLists = function(list1, list2) {
         // then move list1 pointer to next value
     //else you do the opposite
     //if you have no more values in 1 list then next value is just = to list with values
-    
-    // if(!list1 && !list2) return []
-    
+        
     let newList = tail = new ListNode();
     
     while(list1 && list2){
@@ -38,8 +36,6 @@ var mergeTwoLists = function(list1, list2) {
         
     }
     
-    // if(!list1) newList.next = list2
-    // if(!list2) newList.next = list1
      tail.next = list1 || list2;
     
     return newList.next
