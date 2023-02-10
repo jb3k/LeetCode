@@ -12,8 +12,7 @@
  */
 var addTwoNumbers = function(l1, l2) {
     
-    var List = new ListNode(0);
-    var head = List;
+    var List = head = new ListNode(0);
     var sum = 0;
     var carry = 0;
 
