@@ -11,35 +11,22 @@ var evalRPN = function(tokens) {
         // else stack.push(num)
     //return number in stack
     
-    let stack = []
-    for(let i = 0; i < tokens.length; i++){
-        let t = tokens[i];
-        if(t === '+'){
-            let first = stack.pop()
-            let second = stack.pop()
-            let sum = first + second
-            stack.push(sum)
-        } else if(t === '-'){
-            let first = stack.pop()
-            let second = stack.pop()
-            let sum = second - first
-            stack.push(sum)
-        } else if(t === '*'){
-            let first = stack.pop()
-            let second = stack.pop()
-            let sum = first * second
-            stack.push(sum)
-        }else if(t === '/'){
-            let first = stack.pop()
-            let second = stack.pop()
-            let sum = second / first > 0 ? Math.floor(second/first) : Math.ceil(second/first)
-            stack.push(sum)
-        } else {
-            stack.push(Number(t))
-        }
-        
+  let stack = [];
+  let ops = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '*': (a, b) => a * b,
+    '/': (a, b) => a / b >= 0 ? Math.floor(a / b) : Math.ceil(a / b),
+  };
+  for (let t of tokens) {
+    if (ops[t]) {
+      let top = stack.pop();
+      let second = stack.pop();
+      stack.push(ops[t](second, top));
+    } else {
+      stack.push(Number(t));
     }
-    
-    return stack.pop()
+  }
+  return stack.pop();
     
 };
