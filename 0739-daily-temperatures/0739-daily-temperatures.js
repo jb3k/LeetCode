@@ -4,7 +4,7 @@
  */
 var dailyTemperatures = function(T) {
     
-    let stack = [];
+   let stack = [];
    let result = new Array(T.length).fill(0);
     for(let i=0; i < T.length; i++){
         while(stack.length && T[i] > T[stack[stack.length-1]]){
@@ -14,6 +14,18 @@ var dailyTemperatures = function(T) {
         stack.push(i)
     }
     return result;
+    
+    
+    // let stack = []
+    // let results = new Array(T.length).fill(0)
+    // for(let i = 0; i < T.length; i++){
+    //     //T[i] = the temp in the arr
+    //     //T[stack[stack.length -1]] = the values in the T arr
+    //     while(stack.length && T[i] > )
+    //     stack.push(i)
+    // }
+    
+    
     
     
 };
