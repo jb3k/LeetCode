@@ -33,6 +33,12 @@ var numUniqueEmails = function(emails) {
 
 function normalizeEmail(email) {
     let [local, domain] = email.split("@");
-    local = local.replace(/(\.)|(\+.*)/g, "")
+    while(local.includes('.')){
+        local = local.replace('.', "")
+    }
+    if(local.includes('+')){
+        local = local.split('+')[0]
+    }
+    console.log(local)
     return local + "@" + domain
 }
