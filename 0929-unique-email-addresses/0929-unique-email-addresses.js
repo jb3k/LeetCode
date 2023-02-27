@@ -39,6 +39,5 @@ function normalizeEmail(email) {
     if(local.includes('+')){
         local = local.split('+')[0]
     }
-    console.log(local)
     return local + "@" + domain
 }
