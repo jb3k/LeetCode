@@ -9,6 +9,7 @@ var largestNumber = function(nums) {
         let sb = b.toString()
         return parseInt(sa + sb) > parseInt(sb + sa) ? -1 : 1
     })
+    console.log(nums)
     if(nums[0] === 0) return '0'
     
     return nums.join('')
