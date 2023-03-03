@@ -8,7 +8,7 @@ var subarraySum = function(nums, k) {
   let map = { 0: 1 };
   let count = 0;
   let sum = 0;
-  for (let idx = 0, len = nums.length; idx < len; idx++) {
+  for (let idx = 0; idx < nums.length; idx++) {
     sum += nums[idx];
     if (map[sum - k]) {
       count += map[sum - k];
