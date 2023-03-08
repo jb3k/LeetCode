@@ -3,27 +3,21 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-    let numSet = new Set(nums)
-  let counter = 0;
-  
-	for(let num of [...numSet]){
-  		//find numbers that start a sequence
-      	const prevNum = num - 1
-        if(numSet.has(prevNum)) continue;
-      
-      	//find streaks if any
-      	let currNum = num
-      	let score = 1
-      	
-      	//see if the next number exists in the og set
-      	let streak = () => numSet.has(currNum + 1)
-        while(streak()){
-        currNum ++
-        score++
+    let set = new Set(nums)
+    let count = 1
+    let max = 0
+    
+    if(nums.length === 0) return 0
+    
+    for(let num of set){
+        if(set.has(num + 1) && !set.has(num - 1)){
+            while(set.has(num + 1)){
+                num++
+                count++
+            }
         }
-      
-      	counter = Math.max(counter, score)
-      
+        max = Math.max(count, max)
+        count = 1
     }
-  return counter
+    return max
 };
