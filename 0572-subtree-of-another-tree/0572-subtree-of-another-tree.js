@@ -13,20 +13,20 @@
  */
 var isSubtree = function(root, subRoot) {
     
-  const queue = [root];
-  while (queue.length) {
-    const node = queue.pop();
-    if (!node) continue;
-    if (isSame(node, subRoot)) return true;
-    queue.push(node.right, node.left);
-  }
-  return false;
+    //stack
+    //helper func to see if root and subroot are same
+    //if everything to left and right are =
+    //recursive
     
+    const helper = (rootNode, subRootNode) => {
+        if(!rootNode && !subRootNode) return true
+        if(!rootNode || !subRootNode || rootNode.val !== subRootNode.val) return false
+        return (helper(rootNode.left, subRootNode.left)) && (helper(rootNode.right, subRootNode.right))
+        
+    }
+    
+    if (!root) return false;
+    if (helper(root, subRoot)) return true;
+    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
 };
 
-var isSame = function(root, subRoot){
-    if (!root && !subRoot) return true;
-    if( !root || !subRoot || root.val !== subRoot.val) return false
-    
-    return (isSame(root.left, subRoot.left) && isSame(root.right, subRoot.right))
-}
