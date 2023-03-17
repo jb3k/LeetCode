@@ -4,13 +4,6 @@
  */
 var evalRPN = function(tokens) {
     
-    //make a stack
-    // use operators (to make long conditional and make sure ts a 32-but int)
-    // loop thru tokens
-        // if 
-        // else stack.push(num)
-    //return number in stack
-    
   let stack = [];
   let ops = {
     '+': (a, b) => a + b,
