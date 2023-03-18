@@ -14,12 +14,12 @@ var checkInclusion = function(s1, s2) {
     
 	let left = 0
     let right = 0
-	let requiredLength = s1.length //length of the substring required in s2
+	let requiredLength = s1.length
 
 	while (right < s2.length) {
 		if (neededChar[s2[right]] > 0) requiredLength--;
 		neededChar[s2[right]]--;
-		right++ //window is incremented by 1 step
+		right++ 
 
 		if (requiredLength === 0) return true;
 		if (right - left === s1.length) {
