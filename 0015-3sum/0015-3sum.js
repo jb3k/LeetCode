@@ -3,7 +3,7 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
-      let sorted = nums.sort((a, b) => a - b)
+  let sorted = nums.sort((a, b) => a - b)
   let res = []
   
   for(let i = 0; i <= sorted.length; i++){
