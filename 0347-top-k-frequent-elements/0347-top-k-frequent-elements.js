@@ -20,9 +20,7 @@ var topKFrequent = function(nums, k) {
         let value = obj[key]
         freq[value].push(key)
     }
-    
-    console.log(freq)
-    
+        
     let res = []
     //get keys of the freq obj so we can loop thru with reg for loop
     let keys = Object.keys(freq)
