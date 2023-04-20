@@ -4,21 +4,21 @@
  */
 var productExceptSelf = function(nums) {
     
-  const res = [];
-  let product = 1;
+    var output = [];
+    var leftMult = 1;
+    var rightMult = 1;
+    for (var i=nums.length - 1; i >= 0; i--) {
+        output[i] = rightMult;
+        rightMult *= nums[i];
+    }
+    for (var j=0; j < nums.length; j++) {
+        output[j] *= leftMult;
+        leftMult *= nums[j];
+        
 
-  for (let i = 0; i < nums.length; i++) {
-    res.push(product);
-    product *= nums[i];
-  }
-
-  product = 1;
-
-  for (let j = nums.length - 1; j >= 0; j--) {
-    res[j] *= product;
-    product *= nums[j];
-  }
-
-  return res;
+        
+    }
+    return output;
+    
     
 };
