@@ -3,19 +3,28 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-  let sorted = strs.map(word => word.split('').sort().join(''))
-  let hash = {}
-  
-  for(let i = 0; i < strs.length; i++){
-  	let ele = strs[i]
-    let sortedWord = sorted[i]
+
+    // if we sort the letters inside each word it will auto group
+    // gather each kind of anagram, store them as k/v key = ana , v = []
+    // loop thru the strs, and push the words into their ana array
     
-    if(hash[sortedWord]){
-    	hash[sortedWord].push(ele)
-    } else {
-    	hash[sortedWord] = [ele]
+    
+    let sorted = strs.map(word => word.split('').sort().join(''))
+    
+    let obj = {};
+    sorted.forEach(ele => {
+        if(!obj[ele]) obj[ele] = []
+    })
+    
+    for(let i = 0; i < sorted.length; i++){
+        let anagram = sorted[i]
+        let word = strs[i]
+        if(obj[anagram]) obj[anagram].push(word)
+        
+        
     }
-  }
-  
-  return Object.values(hash)
+    
+    return Object.values(obj)
+    
+    
 };
