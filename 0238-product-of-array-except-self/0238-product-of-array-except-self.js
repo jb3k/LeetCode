@@ -4,21 +4,24 @@
  */
 var productExceptSelf = function(nums) {
     
-    var output = [];
-    var leftMult = 1;
-    var rightMult = 1;
-    for (var i=nums.length - 1; i >= 0; i--) {
-        output[i] = rightMult;
-        rightMult *= nums[i];
-    }
-    for (var j=0; j < nums.length; j++) {
-        output[j] *= leftMult;
-        leftMult *= nums[j];
-        
+  let leftArr = [];
+  let leftMultiplication = 1;
 
-        
-    }
-    return output;
+  for (let i=0; i < nums.length; i++) {
+    leftArr[i] = leftMultiplication;
+    leftMultiplication *=  nums[i];
+  }
+    
+  let rightArr = [];
+  let rightMultiplication = 1;
+
+  for (let i=nums.length-1; i >= 0; i--) {
+    rightArr[i] = rightMultiplication;
+    rightMultiplication *= nums[i];
+    rightArr[i] *= leftArr[i]; //this additional step saves us from having another iteration. We can do the multiplication at the spot.
+  }
+  
+  return rightArr;
     
     
 };
