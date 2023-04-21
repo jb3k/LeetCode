@@ -3,30 +3,41 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
-  let sorted = nums.sort((a, b) => a - b)
-  let res = []
-  
-  for(let i = 0; i <= sorted.length; i++){
-    let targ = sorted[i]
-    if(i > 0 && targ === sorted[i - 1])
-      continue
+
+	const results = []
+	if (nums.length < 3) return results
+    nums.sort((a, b) => a - b)
+
+    // if the question asks us for a custom target, we can control it here
+	let target = 0
+
+	for (let i = 0; i < nums.length - 2; i++) {
+		if (nums[i] > target) break
+		// we don't want repeats, so skip numbers we've already seen
+		if (i > 0 && nums[i] === nums[i - 1]) continue
+		
+        let j = i + 1
+		let k = nums.length - 1
+
+		while (j < k) {
+			let sum = nums[i] + nums[j] + nums[k]
+			if (sum === target) {
+				results.push([nums[i], nums[j], nums[k]])
+				while (nums[j] === nums[j + 1]) j++
+				while (nums[k] === nums[k - 1]) k--
+				j++
+				k--
+			} else if (sum < target) {
+				j++
+			} else { // (sum > target)
+				k--
+			}
+		}
+	}
+
+	return results
     
-  	let [l, r] = [i + 1, sorted.length - 1]
     
-    while (l < r){
-      	let sum = targ + sorted[l] + sorted[r]
-    	if(sum < 0 ) l+=1
-      	else if(sum > 0 ) r-=1
-      	else { 
-          res.push([targ, sorted[l], sorted[r]]); 
-          l += 1 
-          while(nums[l] === nums[l - 1] && 1 < r){
-          	l+=1
-          } 
-        }
-      	
-    }
-  }
-  
-  return res
+    
+    
 };
