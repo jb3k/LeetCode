@@ -12,10 +12,14 @@ var characterReplacement = function(s, k) {
 
   while (right < s.length) {
     const char = s[right];
+    //the count of each letter
     visited[char] = visited[char] ? visited[char] + 1 : 1;
-
+    
+      // checking to see 
     if (visited[char] > maxCharCount) maxCharCount = visited[char];
+    console.log(visited, visited[char], maxCharCount)
 
+      //creating the window size
     if (right - left + 1 - maxCharCount > k) {
       visited[s[left]]--;
       left++;
