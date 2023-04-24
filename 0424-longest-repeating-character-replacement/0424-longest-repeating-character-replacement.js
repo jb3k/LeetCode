@@ -17,7 +17,7 @@ var characterReplacement = function(s, k) {
     
       // checking to see 
     if (visited[char] > maxCharCount) maxCharCount = visited[char];
-    console.log(visited, visited[char], maxCharCount)
+    // console.log(visited, visited[char], maxCharCount)
 
       //creating the window size
     if (right - left + 1 - maxCharCount > k) {
