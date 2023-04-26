@@ -7,23 +7,30 @@ var topKFrequent = function(nums, k) {
 
     if(nums.length <= 1) return nums
     
-    let obj = {} // {1:3, 2:2, 3:1}
-    let freq = {} // { '1': [], '2': [], '3': [], '4': [], '5': [], '6': [] }
+    // count the freq in an obj
+    // store values based on amount in an obj
+        // loop thru the obj and store the values that had that count
+    // loop thru the stored values backwards to the the most frequent elements and do this until the res arr has k values
+    
+    let obj = {}
+    let freq = {}
+    
     nums.forEach((num, i) => {
+        if(!obj[num]) obj[num] = 0
+        obj[num]++
         freq[i + 1] = []
-        if(obj[num]) obj[num] += 1
-        else obj[num] = 1    
     })
     
-    // loop thru obj and add them to the freq based on their frequency
-    for(let key in obj){
-        let value = obj[key]
-        freq[value].push(key)
+    for(let count in obj){
+        let val = obj[count];
+        if(freq[val]){
+            freq[val].push(count)
+        }  
     }
-        
-    let res = []
-    //get keys of the freq obj so we can loop thru with reg for loop
+            
+    let res = []    
     let keys = Object.keys(freq)
+    
     for(let i = keys.length - 1; i >= 0; i--){
         let key = keys[i]
         for(let num of freq[key]){
