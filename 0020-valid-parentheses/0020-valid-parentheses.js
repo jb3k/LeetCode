@@ -4,11 +4,14 @@
  */
 var isValid = function(s) {
     
-    // let stack = []
-    // identify valid brackets
-    // loop thru string
-    // see if 
+    //want to have as a stack
+    // make an object that stores the 3 char
+    // loop thru s
+        // push the first char into stack
+        // conditional that checks if the value of the first 
+        // 
     
+    // return the stack length === 0
     let stack = []
     let hash = {
         ')':'(',
@@ -31,4 +34,7 @@ var isValid = function(s) {
     }
     
     return stack.length === 0
+    
+    
+
 };
