@@ -19,7 +19,6 @@ class Solution:
                     res.remove(s[l])
                     l+=1
                 res.add(s[r])
-            print(res)
             r+=1
         
         count = max(count, len(res))
