@@ -9,6 +9,5 @@ class Solution:
         arr = [letters for letters in lower if letters in alph]
         newStr = ''.join(arr)
         rev = newStr[::-1]
-        print(newStr, rev)
         
         return newStr == rev
