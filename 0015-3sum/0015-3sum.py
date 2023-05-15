@@ -20,5 +20,4 @@ class Solution:
                     while sorted_nums[left - 1] == sorted_nums[left] and left < right:
                         left += 1
         
-       
         return res
